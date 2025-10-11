@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Tara Travels | Discover Sri Lanka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F7F3;
+            --gold: #B9975B;
+            --green: #004225; /* British Racing Green */
+            --charcoal: #2C2C2C;
+            --terracotta: #A65437;
+            --white: #FFFFFF;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--ivory);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--green);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a.active {
+            color: var(--green);
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        /* Blog Hero Section */
+        .blog-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 66, 37, 0.7), rgba(0, 66, 37, 0.7)), url('https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80') no-repeat center center/cover;
+            color: var(--ivory);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .blog-hero-content h1 {
+            font-size: 3rem;
+            color: var(--ivory);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .blog-hero-content .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: var(--ivory);
+        }
+        
+        /* Blog Layout */
+        .blog-container {
+            display: flex;
+            gap: 40px;
+            padding: 60px 0;
+        }
+        
+        .blog-content {
+            flex: 2;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .blog-sidebar {
+            flex: 1;
+        }
+        
+        /* Blog Post Styles */
+        .blog-post h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--green);
+        }
+        
+        .blog-post p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .blog-post img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .blog-post h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: var(--charcoal);
+        }
+        
+        .blog-post ul, .blog-post ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .blog-post li {
+            margin-bottom: 10px;
+        }
+        
+        /* Tour Thumbnails */
+        .tour-thumbnails {
+            margin: 60px 0;
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tour-thumbnails h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--green);
+        }
+        
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .tour-card {
+            background-color: var(--ivory);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tour-img {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .tour-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .tour-card:hover .tour-img img {
+            transform: scale(1.1);
+        }
+        
+        .tour-content {
+            padding: 20px;
+        }
+        
+        .tour-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .tour-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--green);
+            font-size: 0.9rem;
+        }
+        
+        .tour-cta {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar-widget {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--green);
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blog-links, .destination-links, .tour-links {
+            list-style: none;
+        }
+        
+        .blog-links li, .destination-links li, .tour-links li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .blog-links li:last-child, .destination-links li:last-child, .tour-links li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .blog-links a, .destination-links a, .tour-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-links a:hover, .destination-links a:hover, .tour-links a:hover {
+            color: var(--gold);
+        }
+        
+        .blog-links a i, .destination-links a i, .tour-links a i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--green);
+            color: var(--ivory);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--ivory);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--ivory);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--ivory);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .blog-hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-container {
+                flex-direction: column;
+            }
+            
+            .blog-hero {
+                height: 40vh;
+            }
+            
+            .blog-hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .blog-hero {
+                height: 35vh;
+            }
+            
+            .blog-hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .blog-content {
+                padding: 20px;
+            }
+            
+            .blog-post h2 {
+                font-size: 1.8rem;
+            }
+            
+            .tours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-container">
+                <a href="home page.html" class="logo">Tara<span>Travels</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="home page.html">Home</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="blog.html" class="active">Blog</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-content">
+                <h1>Best Time to Visit Sri Lanka</h1>
+                <div class="blog-meta">
+                    <span><i class="fas fa-calendar"></i> April 20, 2025</span>
+                    <span><i class="fas fa-user"></i> By Tara Travels</span>
+                    <span><i class="fas fa-tag"></i> Travel Tips</span>
+                </div>
+                <p>A comprehensive guide to help you plan the perfect Sri Lankan adventure based on weather, festivals, and regional variations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="container">
+        <div class="blog-container">
+            <!-- Main Blog Content -->
+            <div class="blog-content">
+                <article class="blog-post">
+                    <h2>Understanding Sri Lanka's Climate</h2>
+                    <p>Sri Lanka's tropical climate means it's warm year-round, but the island experiences two distinct monsoon seasons that affect different regions at different times. Understanding these patterns is key to planning your perfect trip.</p>
+                    
+                    <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Sri Lanka Climate">
+                    
+                    <h3>Yala Monsoon (Southwest Monsoon)</h3>
+                    <p>The Yala monsoon affects the southwest coast and hill country from May to September. During this period, these regions experience heavy rainfall, particularly in the afternoons and evenings.</p>
+                    
+                    <h3>Maha Monsoon (Northeast Monsoon)</h3>
+                    <p>The Maha monsoon affects the north and east coasts from October to January. While these areas receive significant rainfall during this period, the southwest coast enjoys dry and sunny weather.</p>
+                    
+                    <!-- First Tour Thumbnails Section -->
+                    <div class="tour-thumbnails">
+                        <h3>Recommended Tours for This Season</h3>
+                        <div class="tours-grid">
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Cultural Triangle Tour">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Cultural Triangle</h4>
+                                    <div class="tour-meta">
+                                        <span>7 Nights</span>
+                                        <span>Heritage</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Beach Escape Tour">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Beach Escape</h4>
+                                    <div class="tour-meta">
+                                        <span>5 Nights</span>
+                                        <span>Coastal</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Hill Country Adventure">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Hill Country</h4>
+                                    <div class="tour-meta">
+                                        <span>6 Nights</span>
+                                        <span>Mountains</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Best Time for Wildlife Viewing</h3>
+                    <p>The dry seasons are generally the best times for wildlife viewing in national parks like Yala and Udawalawe. From February to June, water sources become scarce, forcing animals to gather around remaining waterholes, making them easier to spot.</p>
+                    
+                    <h3>Festivals and Cultural Events</h3>
+                    <p>Sri Lanka's cultural calendar is filled with vibrant festivals that can greatly enhance your travel experience. The Esala Perahera in Kandy (July/August) is one of the most spectacular Buddhist festivals in Asia, featuring beautifully decorated elephants, traditional dancers, and fire performers.</p>
+                    
+                    <!-- Second Tour Thumbnails Section -->
+                    <div class="tour-thumbnails">
+                        <h3>Festival Season Special Tours</h3>
+                        <div class="tours-grid">
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1597773150790-e64d5c9d7b5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kandy Festival Tour">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Kandy Festival</h4>
+                                    <div class="tour-meta">
+                                        <span>4 Nights</span>
+                                        <span>Cultural</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1582573618381-c9a77c31f6b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Galle Heritage Tour">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Galle Heritage</h4>
+                                    <div class="tour-meta">
+                                        <span>5 Nights</span>
+                                        <span>Historical</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1581666625250-57a56a472537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Coastal Explorer">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Coastal Explorer</h4>
+                                    <div class="tour-meta">
+                                        <span>7 Nights</span>
+                                        <span>Beaches</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Regional Breakdown by Season</h3>
+                    <p>To help you plan your itinerary, here's a seasonal breakdown of Sri Lanka's main regions:</p>
+                    
+                    <h4>West & South Coasts (December to March)</h4>
+                    <p>Ideal beach weather with calm seas perfect for swimming and water sports. This is the peak tourist season for these regions.</p>
+                    
+                    <h4>East Coast (April to September)</h4>
+                    <p>The best time to visit Arugam Bay and other east coast destinations, with dry weather ideal for surfing and beach activities.</p>
+                    
+                    <h4>Hill Country (December to March)</h4>
+                    <p>Clear skies and pleasant temperatures make this the perfect time for hiking and exploring tea plantations.</p>
+                    
+                    <!-- Third Tour Thumbnails Section -->
+                    <div class="tour-thumbnails">
+                        <h3>Seasonal Specials</h3>
+                        <div class="tours-grid">
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="East Coast Explorer">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>East Coast Explorer</h4>
+                                    <div class="tour-meta">
+                                        <span>6 Nights</span>
+                                        <span>Beach & Surf</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Tea Trail">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Tea Trail</h4>
+                                    <div class="tour-meta">
+                                        <span>5 Nights</span>
+                                        <span>Hill Country</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                            
+                            <div class="tour-card">
+                                <div class="tour-img">
+                                    <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt>Wildlife Safari">
+                                </div>
+                                <div class="tour-content">
+                                    <h4>Wildlife Safari</h4>
+                                    <div class="tour-meta">
+                                        <span>4 Nights</span>
+                                        <span>Adventure</span>
+                                    </div>
+                                    <a href="#" class="tour-cta">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Conclusion</h3>
+                    <p>There's truly no bad time to visit Sri Lanka - each season offers unique experiences. The key is matching your interests with the right region and time of year. Whether you're seeking sunny beaches, cultural festivals, or wildlife encounters, Sri Lanka has something to offer year-round.</p>
+                    
+                    <p>Contact our travel specialists at Tara Travels to craft your personalized Sri Lankan itinerary based on your preferences and the optimal travel season for your chosen activities.</p>
+                </article>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="blog-sidebar">
+                <!-- Recent Blog Posts -->
+                <div class="sidebar-widget">
+                    <h3>Recent Posts</h3>
+                    <ul class="blog-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> The Ancient Wonder of Sigiriya</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hidden Beaches of Southern Sri Lanka</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ceylon Tea: A Journey Through the Highlands</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Colonial Heritage in Galle Fort</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sri Lankan Cuisine: A Flavorful Journey</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Popular Destinations -->
+                <div class="sidebar-widget">
+                    <h3>Popular Destinations</h3>
+                    <ul class="destination-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sigiriya</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Kandy</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Galle</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Ella</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Yala National Park</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Mirissa</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Featured Tours -->
+                <div class="sidebar-widget">
+                    <h3>Featured Tours</h3>
+                    <ul class="tour-links">
+                        <li><a href="#"><i class="fas fa-route"></i> Cultural Triangle</a></li>
+                        <li><a href="#"><i class="fas fa-route"></i> Beach Escape</a></li>
+                        <li><a href="#"><i class="fas fa-route"></i> Hill Country Adventure</a></li>
+                        <li><a href="#"><i class="fas fa-route"></i> Wildlife Safari</a></li>
+                        <li><a href="#"><i class="fas fa-route"></i> Luxury Honeymoon</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Tara Travels</h3>
+                    <p>Crafting unique Sri Lankan experiences for the discerning traveler since 2015.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="home page.html">Home</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Galle Road, Colombo, Sri Lanka</li>
+                        <li><i class="fas fa-phone"></i> +94 11 234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@taratravels.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for travel inspiration and special offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" style="width: 100%; padding: 10px; margin: 10px 0; border: none; border-radius: 4px;">
+                        <button type="submit" style="background: var(--gold); color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Tara Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

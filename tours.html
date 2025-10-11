@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tara Travels | Tours in Sri Lanka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a3093;
+            --primary-light: #a044ff;
+            --primary-dark: #4a1c6d;
+            --secondary: #f5b7b1;
+            --accent: #fad7a0;
+            --light: #f9f5ff;
+            --dark: #2d1a3a;
+            --text: #333333;
+            --pastel-purple: #d6c2ff;
+            --pastel-pink: #ffd1dc;
+            --pastel-blue: #c9e9ff;
+            --pastel-green: #d1ffbd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+            padding-top: 100px; /* Offset for fixed header */
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)), url('https://images.unsplash.com/photo-1562586091-8d24b3c9453d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--dark);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-placeholder {
+            width: 180px;
+            height: 50px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 20px;
+            border: 2px solid #000;
+        }
+        
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-email, .contact-whatsapp {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .contact-whatsapp {
+            color: #25D366;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .tours-hero {
+            background: linear-gradient(rgba(106, 48, 147, 0.85), rgba(106, 48, 147, 0.85)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .tours-hero-content h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tours-hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #f8f8f8;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #f8c471;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(106, 48, 147, 0.1);
+            margin: -40px auto 40px;
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+        }
+        
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .filter-group {
+            margin-bottom: 15px;
+        }
+        
+        .filter-group h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 600;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background-color: var(--light);
+            border: 1px solid var(--pastel-purple);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .search-box {
+            display: flex;
+            margin-top: 25px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--pastel-purple);
+            border-radius: 5px 0 0 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .search-box button {
+            padding: 0 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        /* Tours Grid */
+        .section-title {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0 80px;
+        }
+        
+        .tour-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(106, 48, 147, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106, 48, 147, 0.2);
+        }
+        
+        .tour-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .tour-img:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(106, 48, 147, 0.7), transparent);
+        }
+        
+        .tour-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .tour-card:hover .tour-img img {
+            transform: scale(1.1);
+        }
+        
+        .tour-content {
+            padding: 25px;
+        }
+        
+        .tour-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        .tour-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .tour-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tour-tag {
+            padding: 5px 10px;
+            background-color: var(--pastel-purple);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--primary-dark);
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 10px;
+        }
+        
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid var(--pastel-purple);
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination-btn:hover, .pagination-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .header-contact {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-end;
+            }
+            
+            .tours-hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tours-hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+            
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .logo-container {
+                order: 1;
+                width: 50%;
+            }
+            
+            .header-contact {
+                order: 3;
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 15px;
+                display: none;
+            }
+            
+            .header-contact.active {
+                display: flex;
+            }
+            
+            .nav-links {
+                order: 2;
+                width: 50%;
+                justify-content: flex-end;
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                order: 2;
+            }
+            
+            .tours-hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-email span, .contact-whatsapp span {
+                display: none;
+            }
+            
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-placeholder {
+                width: 150px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .tours-hero {
+                padding: 60px 0;
+            }
+            
+            .tours-hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                padding: 40px 0 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .filter-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-placeholder">TARA TRAVELS</div>
+            </div>
+            
+            <div class="header-contact">
+                <a href="mailto:info@taratravels.co" class="contact-email">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@taratravels.co</span>
+                </a>
+                <a href="https://wa.me/94766634223" class="contact-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+94 76 663 4223</span>
+                </a>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#" style="color: var(--primary);">Tours</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="tours-hero">
+        <div class="container">
+            <div class="tours-hero-content">
+                <h1>Explore Our Tours</h1>
+                <p>Discover the perfect Sri Lankan adventure with our handpicked selection of tours, designed to create unforgettable memories.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <div class="container">
+        <div class="filter-section">
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <h3>Tour Category</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active">All Tours</button>
+                        <button class="filter-btn">Cultural</button>
+                        <button class="filter-btn">Adventure</button>
+                        <button class="filter-btn">Beach</button>
+                        <button class="filter-btn">Wildlife</button>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Duration</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn">1-3 Days</button>
+                        <button class="filter-btn">4-7 Days</button>
+                        <button class="filter-btn">8+ Days</button>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Price Range</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn">Budget</button>
+                        <button class="filter-btn">Mid-range</button>
+                        <button class="filter-btn">Luxury</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Search for tours...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tours Section -->
+    <section class="tours-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Tour Packages</h2>
+                <p>Discover the best of Sri Lanka with our expertly crafted tours</p>
+            </div>
+            
+            <div class="tours-grid">
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Cultural Triangle Tour">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Cultural Triangle</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 7 Days</span>
+                            <span><i class="fas fa-dollar-sign"></i> From $899</span>
+                        </div>
+                        <div class="tour-tags">
+                            <span class="tour-tag">Cultural</span>
+                            <span class="tour-tag">Historical</span>
+                        </div>
+                        <p>Explore ancient kingdoms, sacred temples, and UNESCO World Heritage sites.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Beach Escape Tour">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Beach Escape</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 5 Days</span>
+                            <span><i class="fas fa-dollar-sign"></i> From $699</span>
+                        </div>
+                        <div class="tour-tags">
+                            <span class="tour-tag">Beach</span>
+                            <span class="tour-tag">Relaxation</span>
+                        </div>
+                        <p>Relax on pristine beaches, enjoy water sports, and witness spectacular sunsets.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Hill Country Adventure">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Hill Country Adventure</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 6 Days</span>
+                            <span><i class="fas fa-dollar-sign"></i> From $799</span>
+                        </div>
+                        <div class="tour-tags">
+                            <span class="tour-tag">Adventure</span>
+                            <span class="tour-tag">Nature</span>
+                        </div>
+                        <p>Discover tea plantations, waterfalls, and misty mountains in Sri Lanka's highlands.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1582573618381-c9a77c31f6b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Wildlife Safari">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Wildlife Safari</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 4 Days</span>
+                            <span><i class="fas fa-dollar-sign"></i> From $599</span>
+                        </div>
+                        <div class="tour-tags">
+                            <span class="tour-tag">Wildlife</span>
+                            <span class="tour-tag">Safari</span>
+                        </div>
+                        <p>Experience the thrill of spotting leopards, elephants, and exotic birds in their natural habitat.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1596726895343-5b2f2b1b5d6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tea Trail Experience">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Tea Trail Experience</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 3 Days</span>
+                            <span><i class="fas fa-dollar-sign"></i> From $449</span>
+                        </div>
+                        <div class="tour-tags">
+                            <span class="tour-tag">Cultural</span>
+                            <span class="tour-tag">Food</span>
+                        </div>
+                        <p>Journey through lush tea plantations, learn about tea production, and sample the finest Ceylon tea.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1562594645-67e19a6fb1ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Spice Garden Tour">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Spice Garden Tour</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 2 Days</span>
+                            <span><i class="fas fa-dollar-sign"></i> From $299</span>
+                        </div>
+                        <div class="tour-tags">
+                            <span class="tour-tag">Cultural</span>
+                            <span class="tour-tag">Food</span>
+                        </div>
+                        <p>Explore aromatic spice gardens, learn about traditional Ayurvedic medicine, and enjoy cooking demonstrations.</p>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tara Travels</h3>
+                    <p>Creating unforgettable journeys through the beautiful island of Sri Lanka since 2010.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">Destinations</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Sigiriya</a></li>
+                        <li><a href="#">Kandy</a></li>
+                        <li><a href="#">Galle</a></li>
+                        <li><a href="#">Ella</a></li>
+                        <li><a href="#">Yala National Park</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Galle Road, Colombo, Sri Lanka</li>
+                        <li><i class="fas fa-phone"></i> +94 112 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@taratravels.co</li>
+                        <li><i class="fab fa-whatsapp"></i> +94 76 663 4223</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Tara Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const headerContact = document.querySelector('.header-contact');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            headerContact.classList.toggle('active');
+        });
+        
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons in the same group
+                const parentGroup = btn.closest('.filter-group');
+                const groupBtns = parentGroup.querySelectorAll('.filter-btn');
+                groupBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Here you would typically filter the tours
+                // For this example, we're just showing a simple alert
+                console.log('Filter applied: ' + btn.textContent);
+            });
+        });
+        
+        // Pagination functionality
+        const paginationBtns = document.querySelectorAll('.pagination-btn');
+        
+        paginationBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                paginationBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Here you would typically load the next page of results
+                console.log('Page changed to: ' + btn.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

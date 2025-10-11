@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tara Travels | Fixed Mobile Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F7F3;
+            --gold: #B9975B;
+            --green: #004225;
+            --charcoal: #2C2C2C;
+            --white: #FFFFFF;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--ivory);
+            padding: 120px 20px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--green);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--ivory);
+            color: var(--charcoal);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-placeholder {
+            width: 180px;
+            height: 50px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 20px;
+            border: 2px solid #000;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            text-transform: uppercase;
+        }
+        
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--charcoal);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .whatsapp-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #25D366;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .whatsapp-link .fa-whatsapp {
+            font-size: 24px;
+        }
+        
+        .whatsapp-text {
+            display: inline;
+        }
+        
+        .header-cta {
+            position: relative;
+        }
+        
+        .header-cta .btn {
+            padding: 10px 20px;
+            background-color: var(--green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            white-space: nowrap;
+        }
+        
+        .header-cta .btn:hover {
+            background-color: var(--gold);
+        }
+        
+        .enquiry-form {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1001;
+            margin-top: 10px;
+        }
+        
+        .enquiry-form.active {
+            display: block;
+        }
+        
+        .enquiry-form h3 {
+            margin-bottom: 15px;
+            color: var(--green);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--green);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--gold);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--charcoal);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        
+        /* Mobile header elements */
+        .mobile-header-elements {
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .mobile-whatsapp {
+            display: flex;
+        }
+        
+        .mobile-whatsapp a {
+            display: flex;
+            align-items: center;
+            color: #25D366;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        
+        .mobile-header-cta {
+            display: flex;
+        }
+        
+        .mobile-header-cta .btn {
+            padding: 8px 16px;
+            background-color: var(--green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'Open Sans', sans-serif;
+            white-space: nowrap;
+        }
+        
+        .mobile-header-cta .btn:hover {
+            background-color: var(--gold);
+        }
+        
+        /* Mobile dropdown menu */
+        .mobile-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--ivory);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .mobile-dropdown-menu.active {
+            display: flex;
+        }
+        
+        .mobile-dropdown-logo {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-dropdown-nav {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .mobile-dropdown-nav li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-dropdown-nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+        
+        .mobile-dropdown-nav a:hover {
+            color: var(--gold);
+        }
+        
+        .mobile-dropdown-whatsapp {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .mobile-dropdown-whatsapp a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #25D366;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .mobile-dropdown-whatsapp i {
+            font-size: 24px;
+        }
+        
+        .mobile-dropdown-cta {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .mobile-dropdown-cta .btn {
+            padding: 12px 24px;
+            background-color: var(--green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            width: 100%;
+            max-width: 250px;
+        }
+        
+        .mobile-dropdown-cta .btn:hover {
+            background-color: var(--gold);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .whatsapp-text {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+            
+            .header-container {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+            
+            .logo-container {
+                order: 1;
+                width: auto;
+                justify-content: flex-start;
+                margin-bottom: 0;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .header-right {
+                display: none;
+            }
+            
+            .mobile-header-elements {
+                display: flex;
+                order: 2;
+                align-items: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                order: 3;
+                position: static;
+            }
+            
+            .enquiry-form {
+                width: 90vw;
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .logo-placeholder {
+                width: 150px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            /* Hide logo when menu is active */
+            .mobile-menu-active .logo-container {
+                display: none;
+            }
+            
+            .mobile-menu-active .mobile-header-elements {
+                display: none;
+            }
+            
+            .mobile-menu-active .mobile-menu-btn {
+                margin-left: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-placeholder {
+                width: 130px;
+                height: 36px;
+                font-size: 14px;
+            }
+            
+            .enquiry-form {
+                width: 95vw;
+                padding: 15px;
+            }
+            
+            .mobile-dropdown-nav a {
+                font-size: 16px;
+            }
+            
+            .mobile-header-cta .btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+            
+            .mobile-header-elements {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <!-- Replace this with your actual logo -->
+                <div class="logo-placeholder">TARA TRAVELS</div>
+            </div>
+            
+            <div class="mobile-header-elements">
+                <div class="mobile-whatsapp">
+                    <a href="https://wa.me/94766634223" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                
+                <div class="mobile-header-cta">
+                    <button class="btn" id="mobileHeaderPlanBtn">Plan My Journey</button>
+                </div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="header-right">
+                <a href="https://wa.me/94766634223" class="whatsapp-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="whatsapp-text">+94 76 663 4223</span>
+                </a>
+                
+                <div class="header-cta">
+                    <button class="btn" id="planJourneyBtn">Plan My Journey</button>
+                    <div class="enquiry-form" id="enquiryForm">
+                        <h3>Plan Your Journey</h3>
+                        <form id="enquiryFormData">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Travel Plans</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit Enquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div class="mobile-dropdown-menu" id="mobileDropdownMenu">
+            <div class="mobile-dropdown-logo">
+                <div class="logo-placeholder">TARA TRAVELS</div>
+            </div>
+            
+            <ul class="mobile-dropdown-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            
+            <div class="mobile-dropdown-whatsapp">
+                <a href="https://wa.me/94766634223" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+94 76 663 4223</span>
+                </a>
+            </div>
+            
+            <div class="mobile-dropdown-cta">
+                <button class="btn" id="mobilePlanJourneyBtn">Plan My Journey</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Fixed Mobile Menu Button</h1>
+        <p>The mobile menu button should now work correctly. I've fixed the JavaScript and CSS issues.</p>
+        <p>Resize the browser to see the mobile view, or view on a mobile device.</p>
+        
+        <div style="height: 1000px"></div>
+        
+        <p>End of scroll test. Header should remain fixed at the top.</p>
+    </div>
+
+    <script>
+        // Toggle enquiry form
+        const planJourneyBtn = document.getElementById('planJourneyBtn');
+        const enquiryForm = document.getElementById('enquiryForm');
+        const mobileHeaderPlanBtn = document.getElementById('mobileHeaderPlanBtn');
+        const header = document.querySelector('header');
+        
+        planJourneyBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            enquiryForm.classList.toggle('active');
+        });
+        
+        mobileHeaderPlanBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            enquiryForm.classList.toggle('active');
+        });
+        
+        // Close form when clicking outside
+        document.addEventListener('click', function(e) {
+            if (enquiryForm.classList.contains('active') && 
+                !enquiryForm.contains(e.target) && 
+                e.target !== planJourneyBtn &&
+                e.target !== mobileHeaderPlanBtn) {
+                enquiryForm.classList.remove('active');
+            }
+        });
+        
+        // Form submission
+        const enquiryFormData = document.getElementById('enquiryFormData');
+        
+        enquiryFormData.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your enquiry! We will contact you shortly.');
+            enquiryFormData.reset();
+            enquiryForm.classList.remove('active');
+        });
+        
+        // Mobile dropdown menu functionality - FIXED
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+        const mobilePlanJourneyBtn = document.getElementById('mobilePlanJourneyBtn');
+        
+        // Toggle mobile menu
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event from bubbling up
+            mobileDropdownMenu.classList.toggle('active');
+            
+            // Toggle between hamburger and close icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileDropdownMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                header.classList.add('mobile-menu-active');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                header.classList.remove('mobile-menu-active');
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (mobileDropdownMenu.classList.contains('active') && 
+                !mobileDropdownMenu.contains(e.target) && 
+                e.target !== mobileMenuBtn) {
+                mobileDropdownMenu.classList.remove('active');
+                
+                // Reset icon to hamburger
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                header.classList.remove('mobile-menu-active');
+            }
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-dropdown-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDropdownMenu.classList.remove('active');
+                
+                // Reset icon to hamburger
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                header.classList.remove('mobile-menu-active');
+            });
+        });
+        
+        // Mobile enquiry button
+        mobilePlanJourneyBtn.addEventListener('click', function() {
+            mobileDropdownMenu.classList.remove('active');
+            
+            // Reset icon to hamburger
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            header.classList.remove('mobile-menu-active');
+            
+            planJourneyBtn.click(); // Trigger the desktop enquiry form
+        });
+        
+        // Prevent dropdown from closing when clicking inside it
+        mobileDropdownMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>

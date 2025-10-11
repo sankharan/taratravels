@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tara Travels | Discover Sri Lanka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F7F3;
+            --gold: #B9975B;
+            --green: #004225; /* British Racing Green */
+            --charcoal: #2C2C2C;
+            --terracotta: #A65437;
+            --white: #FFFFFF;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--ivory);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 66, 37, 0.7), rgba(0, 66, 37, 0.7)), url('https://images.unsplash.com/photo-1562586091-8d24b3c9453d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--ivory);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--ivory);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--ivory);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--green);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--charcoal);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .about-content .btn {
+            margin: 0;
+        }
+        
+        /* Featured Tours */
+        .section-title {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px 0 80px;
+        }
+        
+        .tour-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tour-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .tour-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .tour-card:hover .tour-img img {
+            transform: scale(1.1);
+        }
+        
+        .tour-content {
+            padding: 25px;
+        }
+        
+        .tour-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .tour-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--green);
+            font-weight: 600;
+        }
+        
+        .tour-cta {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .tour-cta:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .tour-cta:hover:after {
+            width: 100%;
+        }
+        
+        /* USP Section */
+        .usp-section {
+            padding: 80px 0;
+            background-color: var(--ivory);
+        }
+        
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .usp-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .usp-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .usp-icon {
+            font-size: 40px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .usp-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--green);
+        }
+        
+        .usp-card p {
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .blog-card {
+            background-color: var(--ivory);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .blog-card:hover .blog-img img {
+            transform: scale(1.05);
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-content p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .blog-cta {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .blog-cta i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .blog-cta:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Destinations Section */
+        .destinations {
+            background-color: var(--green);
+            padding: 80px 0;
+            color: var(--ivory);
+        }
+        
+        .destinations h2 {
+            color: var(--ivory);
+            text-align: center;
+        }
+        
+        .destinations-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 40px 0;
+            scrollbar-width: thin;
+            -ms-overflow-style: none;
+        }
+        
+        .destinations-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .destinations-scroll::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        
+        .destination-card {
+            flex: 0 0 auto;
+            width: 200px;
+            text-align: center;
+        }
+        
+        .destination-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 3px solid var(--gold);
+            position: relative;
+        }
+        
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .destination-card:hover .destination-image img {
+            transform: scale(1.1);
+        }
+        
+        .destination-card:hover .destination-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(185, 151, 91, 0.3);
+            border-radius: 50%;
+        }
+        
+        .destination-name {
+            font-weight: 600;
+            color: var(--ivory);
+        }
+        
+        /* Experience Section */
+        .experience {
+            padding: 100px 0;
+            background: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            position: relative;
+            color: var(--ivory);
+        }
+        
+        .experience:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .experience-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            background-color: rgba(44, 44, 44, 0.8);
+            padding: 40px;
+            border-radius: 8px;
+        }
+        
+        .experience-content h2 {
+            color: var(--ivory);
+            margin-bottom: 30px;
+        }
+        
+        .experience-features {
+            list-style: none;
+        }
+        
+        .experience-features li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .experience-icon {
+            font-size: 24px;
+            color: var(--gold);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--ivory);
+            position: relative;
+        }
+        
+        .testimonials:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiNCMDk5NUIiIG9wYWNpdHk9IjAuMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') repeat;
+            opacity: 0.1;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            padding: 25px;
+            position: relative;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .testimonial-text:before {
+            content: '"';
+            font-size: 60px;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--green);
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .badge-icon {
+            font-size: 30px;
+            color: var(--gold);
+        }
+        
+        .badge-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* CTA Strip */
+        .cta-strip {
+            background-color: var(--terracotta);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .cta-strip h2 {
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+        
+        .cta-strip .btn {
+            background-color: var(--ivory);
+            color: var(--green);
+        }
+        
+        .cta-strip .btn:hover {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-content {
+                flex: auto;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                padding: 60px 0 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .destination-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Journeys Rooted in Heritage, Designed for Discovery</h1>
+                <p>Crafting unique Sri Lankan experiences for the discerning traveler.</p>
+                <div class="hero-cta">
+                    <a href="#tours" class="btn btn-primary">Explore Tours</a>
+                    <a href="#about" class="btn btn-secondary">Why Tara?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Colonial Mansion">
+                </div>
+                <div class="about-content">
+                    <h2>Our Story, Rooted in Tara</h2>
+                    <p>The name "Tara" finds its origins in Sanskrit, meaning "star" that guides travelers. Inspired by the rich history of British colonial travel and the timeless beauty of Sri Lanka, Tara Travels was established to create journeys that blend heritage with discovery.</p>
+                    <p>With over 10 years of ground experience, we seamlessly blend academic and professional knowledge with grassroots operational insight to craft unforgettable Sri Lankan experiences.</p>
+                    <a href="#" class="btn btn-primary">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Tours Section -->
+    <section class="featured-tours" id="tours">
+        <div class="container">
+            <div class="section-title">
+                <h2>Handpicked Journeys</h2>
+                <p>Explore our most popular Sri Lanka tour packages</p>
+            </div>
+            
+            <div class="tours-grid">
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Cultural Triangle Tour">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Cultural Triangle</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 7 Nights</span>
+                            <span>Heritage & Nature</span>
+                        </div>
+                        <p>Explore ancient kingdoms, sacred temples, and UNESCO World Heritage sites.</p>
+                        <a href="#" class="tour-cta">View Itinerary</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Beach Escape Tour">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Beach Escape</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 5 Nights</span>
+                            <span>Coastal Relaxation</span>
+                        </div>
+                        <p>Relax on pristine beaches, enjoy water sports, and witness spectacular sunsets.</p>
+                        <a href="#" class="tour-cta">View Itinerary</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Hill Country Adventure">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Hill Country Adventure</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 6 Nights</span>
+                            <span>Mountain Exploration</span>
+                        </div>
+                        <p>Discover tea plantations, waterfalls, and misty mountains in Sri Lanka's highlands.</p>
+                        <a href="#" class="tour-cta">View Itinerary</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section class="usp-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Tara Travels?</h2>
+                <p>Our commitment to excellence sets us apart</p>
+            </div>
+            
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Ground Expertise</h3>
+                    <p>Unleash over 10 years of ground experience, seamlessly blending academic and professional knowledge with grassroots operational insight.</p>
+                </div>
+                
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainable Initiatives</h3>
+                    <p>Commitment to UN Sustainable Development Goals (SDGs) ensures a journey with us aligns with a responsible future.</p>
+                </div>
+                
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Best Pricing</h3>
+                    <p>Benefit from the best rates as we eliminate middlemen, connecting you directly with suppliers.</p>
+                </div>
+                
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Proven Service Quality</h3>
+                    <p>Rely on Tara Travels' historically proven service quality, validated by glowing customer reviews.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>From Our Travel Journal</h2>
+                <p>Insights, stories, and travel inspiration</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Sigiriya Rock">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">April 15, 2025</div>
+                        <h3>The Ancient Wonder of Sigiriya</h3>
+                        <p>Discover the fascinating history behind Sri Lanka's iconic rock fortress and what makes it a must-visit destination.</p>
+                        <a href="#" class="blog-cta">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sri Lankan Beach">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 28, 2025</div>
+                        <h3>Hidden Beaches of Southern Sri Lanka</h3>
+                        <p>Explore the less-traveled coastal gems that offer tranquility away from the popular tourist spots.</p>
+                        <a href="#" class="blog-cta">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Tea Plantation">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">March 10, 2025</div>
+                        <h3>Ceylon Tea: A Journey Through the Highlands</h3>
+                        <p>Follow the journey of Sri Lanka's most famous export from plantation to teacup in the misty highlands.</p>
+                        <a href="#" class="blog-cta">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1582573618381-c9a77c31f6b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Galle Fort">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">February 22, 2025</div>
+                        <h3>Colonial Heritage in Galle Fort</h3>
+                        <p>Step back in time as we explore the well-preserved Dutch fort and its vibrant present-day culture.</p>
+                        <a href="#" class="blog-cta">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section class="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Where Will Tara Take You?</h2>
+            </div>
+            
+            <div class="destinations-scroll">
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Sigiriya">
+                    </div>
+                    <div class="destination-name">Sigiriya</div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1597773150790-e64d5c9d7b5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Kandy">
+                    </div>
+                    <div class="destination-name">Kandy</div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1582573618381-c9a77c31f6b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Galle">
+                    </div>
+                    <div class="destination-name">Galle</div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Ella">
+                    </div>
+                    <div class="destination-name">Ella</div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Yala National Park">
+                    </div>
+                    <div class="destination-name">Yala National Park</div>
+                </div>
+                
+                <div class="destination-card">
+                    <div class="destination-image">
+                        <img src="https://images.unsplash.com/photo-1581666625250-57a56a472537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Mirissa">
+                    </div>
+                    <div class="destination-name">Mirissa</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <div class="experience-content">
+                <h2>Beyond Travel — An Experience</h2>
+                <ul class="experience-features">
+                    <li>
+                        <div class="experience-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div class="experience-text">Private Tea Estate Visits</div>
+                    </li>
+                    <li>
+                        <div class="experience-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div class="experience-text">Wildlife Safaris with Expert Naturalists</div>
+                    </li>
+                    <li>
+                        <div class="experience-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div class="experience-text">Authentic Village Life Experiences</div>
+                    </li>
+                    <li>
+                        <div class="experience-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div class="experience-text">Cooking Classes with Local Chefs</div>
+                    </li>
+                    <li>
+                        <div class="experience-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div class="experience-text">Traditional Ayurvedic Wellness Treatments</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Travelers' Tales</h2>
+                <p>What our guests say about their Tara experience</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        Tara Travels crafted the perfect Sri Lankan honeymoon for us. Every detail was thoughtfully planned, from the private safari to the intimate beach dinner. Their ground expertise truly made our trip extraordinary.
+                    </div>
+                    <div class="testimonial-author">— Sarah & Michael, United Kingdom</div>
+                </div>
+            </div>
+            
+            <div class="trust-badges">
+                <div class="badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="badge-text">TripAdvisor Certificate of Excellence</div>
+                </div>
+                
+                <div class="badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="badge-text">Sustainable Tourism Certified</div>
+                </div>
+                
+                <div class="badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="badge-text">4.9/5 Rating from 200+ Reviews</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Strip -->
+    <section class="cta-strip">
+        <div class="container">
+            <h2>Begin Your Sri Lankan Journey with Tara</h2>
+            <p>Connect with our travel specialists to craft your personalized itinerary</p>
+            <a href="#" class="btn">Plan My Trip</a>
+        </div>
+    </section>
+</body>
+</html>
