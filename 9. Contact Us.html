@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Tara Travels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F7F3;
+            --gold: #B9975B;
+            --green: #004225; /* British Racing Green */
+            --charcoal: #2C2C2C;
+            --terracotta: #A65437;
+            --white: #FFFFFF;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--ivory);
+            padding: 40px 20px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--green);
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .page-title h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--charcoal);
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--green);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--green);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        
+        .children-ages {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(185, 151, 91, 0.1);
+            border-radius: 4px;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .phone-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .country-code {
+            flex: 0 0 150px;
+            position: relative;
+        }
+        
+        .country-code select {
+            padding-left: 2.5rem;
+        }
+        
+        .flag {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+        
+        .phone-number {
+            flex: 1;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            background-color: var(--green);
+            color: var(--white);
+            width: 100%;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            flex: 0 0 40px;
+            height: 40px;
+            background-color: var(--green);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .info-text h3 {
+            margin-bottom: 0.3rem;
+            color: var(--green);
+        }
+        
+        .map {
+            margin-top: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+        
+        .whatsapp-numbers {
+            margin-top: 1.5rem;
+        }
+        
+        .whatsapp-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .whatsapp-icon {
+            color: #25D366;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .contact-form, .contact-info {
+                padding: 20px;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .page-title p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-title">
+            <h1>Begin Your Sri Lankan Journey</h1>
+            <p>Connect with our travel specialists to craft your personalized itinerary</p>
+        </div>
+        
+        <div class="contact-content">
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <form id="contactForm">
+                    <!-- 1. Full Name -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <!-- 2. Email Address -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <!-- 3. WhatsApp Number -->
+                    <div class="form-group">
+                        <label for="phone">WhatsApp Number</label>
+                        <div class="phone-input">
+                            <div class="country-code">
+                                <span class="flag">🇬🇧</span>
+                                <select id="countryCode" name="countryCode">
+                                    <option value="+93">🇦🇫 +93 (Afghanistan)</option>
+                                    <option value="+61">🇦🇺 +61 (Australia)</option>
+                                    <option value="+32">🇧🇪 +32 (Belgium)</option>
+                                    <option value="+55">🇧🇷 +55 (Brazil)</option>
+                                    <option value="+1">🇨🇦 +1 (Canada)</option>
+                                    <option value="+86">🇨🇳 +86 (China)</option>
+                                    <option value="+45">🇩🇰 +45 (Denmark)</option>
+                                    <option value="+20">🇪🇬 +20 (Egypt)</option>
+                                    <option value="+33">🇫🇷 +33 (France)</option>
+                                    <option value="+49">🇩🇪 +49 (Germany)</option>
+                                    <option value="+91">🇮🇳 +91 (India)</option>
+                                    <option value="+62">🇮🇩 +62 (Indonesia)</option>
+                                    <option value="+39">🇮🇹 +39 (Italy)</option>
+                                    <option value="+81">🇯🇵 +81 (Japan)</option>
+                                    <option value="+60">🇲🇾 +60 (Malaysia)</option>
+                                    <option value="+52">🇲🇽 +52 (Mexico)</option>
+                                    <option value="+31">🇳🇱 +31 (Netherlands)</option>
+                                    <option value="+64">🇳🇿 +64 (New Zealand)</option>
+                                    <option value="+47">🇳🇴 +47 (Norway)</option>
+                                    <option value="+92">🇵🇰 +92 (Pakistan)</option>
+                                    <option value="+63">🇵🇭 +63 (Philippines)</option>
+                                    <option value="+7">🇷🇺 +7 (Russia)</option>
+                                    <option value="+65">🇸🇬 +65 (Singapore)</option>
+                                    <option value="+27">🇿🇦 +27 (South Africa)</option>
+                                    <option value="+82">🇰🇷 +82 (South Korea)</option>
+                                    <option value="+34">🇪🇸 +34 (Spain)</option>
+                                    <option value="+94">🇱🇰 +94 (Sri Lanka)</option>
+                                    <option value="+46">🇸🇪 +46 (Sweden)</option>
+                                    <option value="+41">🇨🇭 +41 (Switzerland)</option>
+                                    <option value="+66">🇹🇭 +66 (Thailand)</option>
+                                    <option value="+44" selected>🇬🇧 +44 (UK)</option>
+                                    <option value="+1">🇺🇸 +1 (USA)</option>
+                                    <option value="+84">🇻🇳 +84 (Vietnam)</option>
+                                </select>
+                            </div>
+                            <div class="phone-number">
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 4. Days in Sri Lanka -->
+                    <div class="form-group">
+                        <label for="days">Days in Sri Lanka</label>
+                        <select id="days" name="days" required>
+                            <option value="" disabled selected>Select days</option>
+                            <option value="2">2 days</option>
+                            <option value="3">3 days</option>
+                            <option value="4">4 days</option>
+                            <option value="5">5 days</option>
+                            <option value="6">6 days</option>
+                            <option value="7">7 days</option>
+                            <option value="8">8 days</option>
+                            <option value="9">9 days</option>
+                            <option value="10">10 days</option>
+                            <option value="11">11 days</option>
+                            <option value="12">12 days</option>
+                            <option value="13">13 days</option>
+                            <option value="14">14 days</option>
+                            <option value="15">15 days</option>
+                            <option value="16">16 days</option>
+                            <option value="17">17 days</option>
+                            <option value="18">18 days</option>
+                            <option value="19">19 days</option>
+                            <option value="20">20 days</option>
+                            <option value="21">21 days</option>
+                            <option value="22">22 days</option>
+                            <option value="23">23 days</option>
+                            <option value="24">24 days</option>
+                            <option value="25">25 days</option>
+                            <option value="26">26 days</option>
+                            <option value="27">27 days</option>
+                            <option value="28">28 days</option>
+                            <option value="29">29 days</option>
+                            <option value="30">30 days</option>
+                        </select>
+                    </div>
+                    
+                    <!-- 5. Number of People (Without Children) -->
+                    <div class="form-group">
+                        <label for="people">Number of People (Without Children)</label>
+                        <input type="number" id="people" name="people" min="1" max="20" required>
+                    </div>
+                    
+                    <!-- 6. Travelling with Children -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="childrenTravel" name="childrenTravel">
+                        <label for="childrenTravel">Travelling with children</label>
+                    </div>
+                    
+                    <div class="children-ages" id="childrenAges">
+                        <label for="ages">Ages of children (separate with commas)</label>
+                        <input type="text" id="ages" name="ages" placeholder="e.g., 5, 8, 12">
+                    </div>
+                    
+                    <!-- 7. Your Message -->
+                    <div class="form-group">
+                        <label for="message">Your Travel Preferences</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Please share any specific interests, activities, or requirements you'd like us to consider when planning your perfect Sri Lankan journey..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Our Address</h3>
+                        <p>Tara Travels,<br>123 Galle Road,<br>Colombo 03, Sri Lanka</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Opening Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+                
+                <div class="whatsapp-numbers">
+                    <h3>WhatsApp Numbers</h3>
+                    <div class="whatsapp-item">
+                        <div class="whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="whatsapp-text">
+                            <p>+94 77 123 4567 (Sri Lanka)</p>
+                        </div>
+                    </div>
+                    <div class="whatsapp-item">
+                        <div class="whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="whatsapp-text">
+                            <p>+44 20 1234 5678 (UK)</p>
+                        </div>
+                    </div>
+                    <div class="whatsapp-item">
+                        <div class="whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="whatsapp-text">
+                            <p>+1 212 123 4567 (USA)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.949164874999!2d79.84817417500993!3d6.902417293113632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25963120b1509%3A0x2db2c18a7b2c1178!2sGalle%20Rd%2C%20Colombo!5e0!3m2!1sen!2slk!4v1690200000000!5m2!1sen!2slk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle children ages field
+        document.getElementById('childrenTravel').addEventListener('change', function() {
+            const childrenAges = document.getElementById('childrenAges');
+            if (this.checked) {
+                childrenAges.style.display = 'block';
+            } else {
+                childrenAges.style.display = 'none';
+            }
+        });
+
+        // Form validation and submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple email validation
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // If validation passes
+            alert('Thank you for your message! We will get back to you soon to help plan your perfect Sri Lankan journey.');
+            this.reset();
+            document.getElementById('childrenAges').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

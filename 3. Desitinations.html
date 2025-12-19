@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bentota Beach | Tara Travels | Discover Sri Lanka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F7F3;
+            --gold: #B9975B;
+            --green: #004225; /* British Racing Green */
+            --charcoal: #2C2C2C;
+            --terracotta: #A65437;
+            --white: #FFFFFF;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--ivory);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 66, 37, 0.7), rgba(0, 66, 37, 0.7)), url('https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: var(--ivory);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--ivory);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--ivory);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--green);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--charcoal);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            padding: 80px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        /* Overview Section */
+        .overview {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .overview-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .overview-image {
+            flex: 1;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .overview-content {
+            flex: 1;
+        }
+        
+        .overview-content h2 {
+            font-size: 2.5rem;
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+        
+        .overview-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .overview-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .highlight-icon {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+            background-color: var(--ivory);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Activities Section */
+        .activities {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .activity-card {
+            background-color: var(--ivory);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .activity-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .activity-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .activity-card:hover .activity-img img {
+            transform: scale(1.1);
+        }
+        
+        .activity-content {
+            padding: 25px;
+        }
+        
+        .activity-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .activity-content p {
+            margin-bottom: 15px;
+        }
+        
+        /* Tours Section */
+        .tours-section {
+            padding: 80px 0;
+            background-color: var(--ivory);
+        }
+        
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tour-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tour-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .tour-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .tour-card:hover .tour-img img {
+            transform: scale(1.1);
+        }
+        
+        .tour-content {
+            padding: 25px;
+        }
+        
+        .tour-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .tour-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--green);
+            font-weight: 600;
+        }
+        
+        .tour-price {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .tour-cta {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .tour-cta:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .tour-cta:hover:after {
+            width: 100%;
+        }
+        
+        /* Accommodation Section */
+        .accommodation {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .accommodation-card {
+            background-color: var(--ivory);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .accommodation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .accommodation-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .accommodation-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .accommodation-card:hover .accommodation-img img {
+            transform: scale(1.1);
+        }
+        
+        .accommodation-content {
+            padding: 25px;
+        }
+        
+        .accommodation-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .accommodation-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--green);
+            font-weight: 600;
+        }
+        
+        .accommodation-cta {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .accommodation-cta:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .accommodation-cta:hover:after {
+            width: 100%;
+        }
+        
+        /* CTA Strip */
+        .cta-strip {
+            background-color: var(--terracotta);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .cta-strip h2 {
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+        
+        .cta-strip .btn {
+            background-color: var(--ivory);
+            color: var(--green);
+        }
+        
+        .cta-strip .btn:hover {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            
+            .overview-container {
+                flex-direction: column;
+            }
+            
+            .overview-image, .overview-content {
+                flex: auto;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                padding: 60px 0 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bentota Beach</h1>
+                <p>Where golden sands meet turquoise waters in Sri Lanka's premier beach destination</p>
+                <div class="hero-cta">
+                    <a href="#tours" class="btn btn-primary">Explore Bentota Tours</a>
+                    <a href="#overview" class="btn btn-secondary">Discover More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
+        <div class="container">
+            <div class="overview-container">
+                <div class="overview-image">
+                    <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bentota Beach">
+                </div>
+                <div class="overview-content">
+                    <h2>Discover Bentota</h2>
+                    <p>Nestled along Sri Lanka's southwestern coast, Bentota is a tropical paradise renowned for its pristine golden beaches, tranquil lagoon, and lush coconut palm groves. This coastal town offers the perfect blend of relaxation and adventure.</p>
+                    <p>Bentota's unique geography, where the Bentota River meets the Indian Ocean, creates a stunning landscape of waterways, mangroves, and beaches that have made it one of Sri Lanka's most popular tourist destinations.</p>
+                    
+                    <div class="overview-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="highlight-text">Year-round tropical climate</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <div class="highlight-text">Calm lagoon & ocean waters</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <div class="highlight-text">5km stretch of golden sand</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div class="highlight-text">Perfect for water sports</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bentota in Pictures</h2>
+                <p>Explore the beauty of this coastal paradise</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bentota Beach">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1581666625250-57a56a472537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bentota River">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562586091-8d24b3c9453d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bentota Water Sports">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1597773150790-e64d5c9d7b5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Bentota Sunset">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Things to Do in Bentota</h2>
+                <p>Experience the best of beach life and adventure</p>
+            </div>
+            
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://images.unsplash.com/photo-1562586091-8d24b3c9453d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Water Sports">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Water Sports</h3>
+                        <p>Experience thrilling water activities including jet skiing, banana boat rides, windsurfing, and more in Bentota's calm waters.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://images.unsplash.com/photo-1581666625250-57a56a472537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="River Safari">
+                    </div>
+                    <div class="activity-content">
+                        <h3>River Safari</h3>
+                        <p>Explore the Bentota River on a boat safari, discovering mangroves, exotic birds, and traditional fishing villages.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Beach Relaxation">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Beach Relaxation</h3>
+                        <p>Unwind on Bentota's pristine beaches, enjoy spectacular sunsets, and experience true tropical bliss.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Turtle Sanctuary">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Turtle Sanctuary Visit</h3>
+                        <p>Visit the Kosgoda Turtle Sanctuary to learn about conservation efforts and see endangered sea turtles up close.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section class="tours-section" id="tours">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bentota Tour Packages</h2>
+                <p>Carefully crafted experiences for every traveler</p>
+            </div>
+            
+            <div class="tours-grid">
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1598952189979-23f84c5c05a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Beach Escape">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Bentota Beach Escape</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 4 Nights</span>
+                            <span>Relaxation Focus</span>
+                        </div>
+                        <div class="tour-price">From $450</div>
+                        <p>Perfect beach getaway with luxury accommodation, spa treatments, and sunset cruises.</p>
+                        <a href="#" class="tour-cta">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1562586091-8d24b3c9453d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Adventure Package">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Bentota Adventure</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 5 Nights</span>
+                            <span>Activity Focus</span>
+                        </div>
+                        <div class="tour-price">From $580</div>
+                        <p>Thrilling water sports, river safaris, and exploration of nearby attractions.</p>
+                        <a href="#" class="tour-cta">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1581666625250-57a56a472537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Family Package">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Family Beach Holiday</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 6 Nights</span>
+                            <span>Family Friendly</span>
+                        </div>
+                        <div class="tour-price">From $720</div>
+                        <p>Kid-friendly activities, safe beaches, and accommodations perfect for families.</p>
+                        <a href="#" class="tour-cta">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1576619919381-eeab309f7c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Romantic Package">
+                    </div>
+                    <div class="tour-content">
+                        <h3>Romantic Getaway</h3>
+                        <div class="tour-meta">
+                            <span><i class="fas fa-clock"></i> 5 Nights</span>
+                            <span>Couples Focus</span>
+                        </div>
+                        <div class="tour-price">From $650</div>
+                        <p>Private beach dinners, couple spa treatments, and luxury accommodations for romance.</p>
+                        <a href="#" class="tour-cta">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section class="accommodation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Where to Stay in Bentota</h2>
+                <p>Luxury resorts and boutique hotels for every preference</p>
+            </div>
+            
+            <div class="accommodation-grid">
+                <div class="accommodation-card">
+                    <div class="accommodation-img">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Resort">
+                    </div>
+                    <div class="accommodation-content">
+                        <h3>Beachfront Luxury</h3>
+                        <div class="accommodation-meta">
+                            <span><i class="fas fa-star"></i> 5-Star</span>
+                            <span>Beachfront</span>
+                        </div>
+                        <p>Experience ultimate luxury with private beach access, infinity pools, and world-class dining.</p>
+                        <a href="#" class="accommodation-cta">View Options</a>
+                    </div>
+                </div>
+                
+                <div class="accommodation-card">
+                    <div class="accommodation-img">
+                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Boutique Hotel">
+                    </div>
+                    <div class="accommodation-content">
+                        <h3>Boutique Retreats</h3>
+                        <div class="accommodation-meta">
+                            <span><i class="fas fa-star"></i> 4-Star</span>
+                            <span>Intimate Setting</span>
+                        </div>
+                        <p>Charming boutique hotels offering personalized service and unique architectural designs.</p>
+                        <a href="#" class="accommodation-cta">View Options</a>
+                    </div>
+                </div>
+                
+                <div class="accommodation-card">
+                    <div class="accommodation-img">
+                        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Eco Lodge">
+                    </div>
+                    <div class="accommodation-content">
+                        <h3>Eco-Friendly Stays</h3>
+                        <div class="accommodation-meta">
+                            <span><i class="fas fa-leaf"></i> Eco-Certified</span>
+                            <span>Sustainable</span>
+                        </div>
+                        <p>Environmentally conscious accommodations that blend seamlessly with Bentota's natural beauty.</p>
+                        <a href="#" class="accommodation-cta">View Options</a>
+                    </div>
+                </div>
+                
+                <div class="accommodation-card">
+                    <div class="accommodation-img">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Villa Stay">
+                    </div>
+                    <div class="accommodation-content">
+                        <h3>Private Villas</h3>
+                        <div class="accommodation-meta">
+                            <span><i class="fas fa-home"></i> Private</span>
+                            <span>Exclusive</span>
+                        </div>
+                        <p>Luxury private villas with personal pools, dedicated staff, and complete privacy for your stay.</p>
+                        <a href="#" class="accommodation-cta">View Options</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Strip -->
+    <section class="cta-strip">
+        <div class="container">
+            <h2>Ready to Experience Bentota?</h2>
+            <p>Let our travel specialists craft your perfect beach getaway</p>
+            <a href="#" class="btn">Plan My Bentota Trip</a>
+        </div>
+    </section>
+</body>
+</html>
